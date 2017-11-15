@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Hal</string>
+    <string name="home_text">Início</string>
+    <string name="welcome_text">Hal!</string>
+    <string name="article_list_title">Lista de Artigos</string>
+    <string name="search">Busca</string>
+    <string name="go">GO</string>
+</resources>
