@@ -1,16 +1,16 @@
 package io.github.frdiniz.hal.model;
 
 public class Article {
-    private long id;
+    private Integer id;
     private String title;
     private String url;
     private String dateAdded;
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -28,9 +28,5 @@ public class Article {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public void setDateAdded(String dateAdded) {
-        this.dateAdded = dateAdded;
     }
 }
