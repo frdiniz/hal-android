@@ -1,10 +1,13 @@
 package io.github.frdiniz.hal.viewController;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.ActionBar;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import io.github.frdiniz.hal.R;
 
@@ -19,6 +22,16 @@ public class ArticleList extends AppCompatActivity {
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setHomeButtonEnabled(true);
         }
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.addArticle);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), ArticleEdit.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

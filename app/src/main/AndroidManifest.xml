@@ -16,12 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="io.github.frdiniz.hal.viewController.ArticleList"
+        <activity
+            android:name=".viewController.ArticleList"
             android:label="@string/article_list_title"
-            android:parentActivityName="io.github.frdiniz.hal.viewController.MainActivity">
+            android:parentActivityName=".viewController.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="io.github.frdiniz.hal.viewController.MainActivity" />
+        </activity>
+        <activity
+            android:name=".viewController.ArticleEdit"
+            android:label="@string/article_edit_title"
+            android:parentActivityName=".viewController.ArticleList">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.frdiniz.hal.viewController.ArticleList" />
         </activity>
     </application>
 
