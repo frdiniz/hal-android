@@ -31,7 +31,7 @@ public class ArticleDAO {
         List<Article> list = new ArrayList<Article>();
         String[] columns = new String[]{ DataCore.KEY_ID, DataCore.KEY_TITLE, DataCore.KEY_URL };
 
-        Cursor cursor = db.query(DataCore.DB_TABLE, columns, null, null, null, null, DataCore.KEY_TITLE + "ASC");
+        Cursor cursor = db.query(DataCore.DB_TABLE, columns, null, null, null, null, DataCore.KEY_TITLE + " ASC");
 
         if(cursor.getCount() > 0) {
             cursor.moveToFirst();

@@ -9,4 +9,5 @@
     <string name="go">GO</string>
     <string name="artitle_title">Título</string>
     <string name="url">Url</string>
+    <string name="example">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet erat. </string>
 </resources>

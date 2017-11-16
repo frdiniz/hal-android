@@ -5,13 +5,20 @@ import android.os.Bundle;
 import android.app.ActionBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+
+import java.util.List;
 
 import io.github.frdiniz.hal.R;
+import io.github.frdiniz.hal.model.Article;
+import io.github.frdiniz.hal.model.ArticleDAO;
 
 public class ArticleList extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +38,12 @@ public class ArticleList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ArticleDAO dao = new ArticleDAO(this);
+        List<Article> list = dao.read();
+
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(new ArticleItemAdapter(this, list));
 
     }
 
