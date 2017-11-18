@@ -1,10 +1,12 @@
 package io.github.frdiniz.hal.viewController;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,6 +14,7 @@ import java.util.List;
 
 import io.github.frdiniz.hal.R;
 import io.github.frdiniz.hal.model.Article;
+import io.github.frdiniz.hal.model.DataBitmapUtil;
 
 
 public class ArticleItemAdapter extends BaseAdapter {
@@ -50,11 +53,21 @@ public class ArticleItemAdapter extends BaseAdapter {
             layout = (LinearLayout)view;
         }
 
+        ImageView image = (ImageView)layout.findViewById(R.id.item_image);
+        Bitmap temp = DataBitmapUtil.toImage(list.get(i).getImage());
+        image.setImageBitmap(temp);
+
         TextView title = (TextView) layout.findViewById(R.id.item_title);
         title.setText(list.get(i).getTitle());
 
-        TextView url = (TextView) layout.findViewById(R.id.item_url);
-        url.setText(list.get(i).getUrl());
+        TextView site = (TextView) layout.findViewById(R.id.item_site);
+        site.setText(list.get(i).getSite());
+
+        TextView description = (TextView) layout.findViewById(R.id.item_desc);
+        String shorten = list.get(i).getDescription();
+        shorten = shorten.substring(0, Math.min(shorten.length(), 90));
+        shorten = shorten + " ...";
+        description.setText(shorten);
 
         return layout;
     }
