@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,27 +24,55 @@ public class ArticleList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.article_list);
 
+        final ArticleDAO dao = new ArticleDAO(getBaseContext());
+        final ListView listView = (ListView) findViewById(R.id.listView);
+
+        // activate the back of the bar action
         ActionBar ab = getActionBar();
         if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setHomeButtonEnabled(true);
         }
 
+        final SwipeRefreshLayout swipe = (SwipeRefreshLayout)findViewById(R.id.swiperefresh);
+        swipe.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        // read database and update list
+                        List<Article> list = dao.read();
+                        listView.setAdapter(new ArticleItemAdapter(getBaseContext(), list));
+                        // stop spinner
+                        swipe.setRefreshing(false);
+                    }
+                }
+        );
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.addArticle);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), ArticleEdit.class);
+                Intent intent = new Intent(getBaseContext(), ArticleNew.class);
                 startActivity(intent);
             }
         });
 
-        ArticleDAO dao = new ArticleDAO(this);
+        // read database and update list
         List<Article> list = dao.read();
-
-        ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new ArticleItemAdapter(this, list));
 
+    }
+
+    @Override
+    protected void onResume() {
+        final ArticleDAO dao = new ArticleDAO(getBaseContext());
+        final ListView listView = (ListView) findViewById(R.id.listView);
+
+        // read database and update list
+        List<Article> list = dao.read();
+        listView.setAdapter(new ArticleItemAdapter(getBaseContext(), list));
+
+        super.onResume();
     }
 
     @Override
@@ -55,6 +83,7 @@ public class ArticleList extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
         return true;
     }
 }
