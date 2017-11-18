@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.frdiniz.hal">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,8 +26,8 @@
                 android:value="io.github.frdiniz.hal.viewController.MainActivity" />
         </activity>
         <activity
-            android:name=".viewController.ArticleEdit"
-            android:label="@string/article_edit_title"
+            android:name=".viewController.ArticleNew"
+            android:label="@string/article_new_title"
             android:parentActivityName=".viewController.ArticleList">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -3,6 +3,9 @@ package io.github.frdiniz.hal.model;
 public class Article {
     private Integer id;
     private String title;
+    private String description;
+    private String site;
+    private byte[] image;
     private String url;
     private String dateAdded;
 
@@ -28,5 +31,29 @@ public class Article {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

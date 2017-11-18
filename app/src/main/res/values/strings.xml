@@ -4,7 +4,8 @@
     <string name="welcome_text">Hal!</string>
     <string name="article_list_title">Lista de Artigos</string>
     <string name="article_edit_title">Editar Artigo</string>
-    <string name="search">Busca</string>
+    <string name="article_new_title">Novo Artigo</string>
+    <string name="search">Buscar</string>
     <string name="save">Salvar</string>
     <string name="go">GO</string>
     <string name="artitle_title">Título</string>
