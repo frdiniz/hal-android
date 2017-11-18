@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataCore extends SQLiteOpenHelper {
     // Database Version
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     // Article Database Name
     private static final String DB_NAME = "db_articles";
@@ -17,6 +17,9 @@ public class DataCore extends SQLiteOpenHelper {
     // Article Table columns Names
     public static final String KEY_ID = "_id";
     public static final String KEY_TITLE = "title";
+    public static final String KEY_DESC = "description";
+    public static final String KEY_SITE = "site";
+    public static final String KEY_IMG = "image";
     public static final String KEY_URL = "url";
     public static final String KEY_DATE = "dateAdded";
 
@@ -24,6 +27,9 @@ public class DataCore extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_ARTICLE = "CREATE TABLE " + DB_TABLE + "(" +
             KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             KEY_TITLE + " TEXT NOT NULL," +
+            KEY_DESC + " TEXT," +
+            KEY_SITE + " TEXT NOT NULL," +
+            KEY_IMG + " BLOB," +
             KEY_URL + " TEXT NOT NULL," +
             KEY_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP" + ");";
 

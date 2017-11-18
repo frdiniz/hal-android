@@ -22,6 +22,9 @@ public class ArticleDAO {
     public void create(Article article) {
         ContentValues values = new ContentValues();
         values.put(DataCore.KEY_TITLE, article.getTitle());
+        values.put(DataCore.KEY_DESC, article.getDescription());
+        values.put(DataCore.KEY_SITE, article.getSite());
+        values.put(DataCore.KEY_IMG, article.getImage());
         values.put(DataCore.KEY_URL, article.getUrl());
 
         db.insert(DataCore.DB_TABLE, null, values);
@@ -29,7 +32,7 @@ public class ArticleDAO {
 
     public List<Article> read() {
         List<Article> list = new ArrayList<Article>();
-        String[] columns = new String[]{ DataCore.KEY_ID, DataCore.KEY_TITLE, DataCore.KEY_URL };
+        String[] columns = new String[]{ DataCore.KEY_ID, DataCore.KEY_TITLE, DataCore.KEY_DESC, DataCore.KEY_SITE, DataCore.KEY_IMG , DataCore.KEY_URL };
 
         Cursor cursor = db.query(DataCore.DB_TABLE, columns, null, null, null, null, DataCore.KEY_TITLE + " ASC");
 
@@ -40,7 +43,10 @@ public class ArticleDAO {
                 Article art = new Article();
                 art.setId(cursor.getInt(0));
                 art.setTitle(cursor.getString(1));
-                art.setUrl(cursor.getString(2));
+                art.setDescription(cursor.getString(2));
+                art.setSite(cursor.getString(3));
+                art.setImage(cursor.getBlob(4));
+                art.setUrl(cursor.getString(5));
                 list.add(art);
 
             } while (cursor.moveToNext());
